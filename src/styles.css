@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.container_center {
+  min-height: 100vh; /* or any other height value you want */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth_box {
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.auth_logo {
+  width: 150px;
+}

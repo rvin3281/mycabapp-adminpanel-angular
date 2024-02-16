@@ -1,0 +1,84 @@
+<div class="d-flex flex-column gap-5">
+  <h1>Edit Driver</h1>
+  <div>
+    <form>
+      <input
+        type="text"
+        class="form-control"
+        name="driverId"
+        id="driverId"
+        [(ngModel)]="displayDriver.driverId"
+        hidden
+      />
+      <div class="mb-3">
+        <label for="drivername" class="form-label">Driver Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="drivername"
+          id="drivername"
+          [(ngModel)]="displayDriver.driverName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="drivermykad" class="form-label">Driver MyKad</label>
+        <input
+          type="text"
+          class="form-control"
+          name="drivermykad"
+          id="drivermykad"
+          [(ngModel)]="displayDriver.driverIdentificationNum"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="drivercotact" class="form-label">Driver Contact</label>
+        <input
+          type="text"
+          class="form-control"
+          name="drivercotact"
+          id="drivercotact"
+          [(ngModel)]="displayDriver.driverContact"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="cabselect" class="form-label">Select Cab For Driver</label>
+        <select
+          class="form-select"
+          id="cabselect"
+          name="cabselect"
+          [(ngModel)]="this.updateDriverById.cabId"
+        >
+          <ng-container
+            *ngIf="displayDriver.cab != null; else noCabAssignTemplate"
+          >
+            <option selected [value]="displayDriver.cab?.cabId">
+              {{ displayDriver.cab?.cabName }}
+            </option></ng-container
+          >
+          <ng-template #noCabAssignTemplate>
+            <option [value]="0" disabled selected>Select Your Cab</option>
+          </ng-template>
+
+          <ng-container *ngIf="availableCabs.length > 0; else noCabFound">
+            <option *ngFor="let cab of availableCabs" [value]="cab.cabId">
+              {{ cab.cabName }}
+            </option>
+          </ng-container>
+          <ng-template #noCabFound>
+            <option [value]="0" disabled>No Cab Data Found</option>
+          </ng-template>
+          <option [value]="-1">No Assign</option>
+        </select>
+      </div>
+
+      <div class="d-flex gap-2">
+        <a (click)="updateDriver()" type="submit" class="btn btn-primary"
+          >Submit</a
+        >
+        <button routerLink="/driver" type="submit" class="btn btn-warning">
+          Back to Driver
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

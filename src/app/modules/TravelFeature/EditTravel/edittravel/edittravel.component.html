@@ -1,0 +1,118 @@
+<div class="d-flex flex-column gap-5">
+  <h1>Edit Travel</h1>
+  <div *ngIf="isLoading"><p>Loading...</p></div>
+  <div *ngIf="!isLoading && !isError">
+    <form>
+      <div class="mb-3">
+        <label for="travelsource" class="form-label">Travel Source</label>
+        <input
+          type="text"
+          class="form-control"
+          name="travelsource"
+          id="travelsource"
+          [(ngModel)]="travel.travelSource"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="traveldestination" class="form-label"
+          >Travel Destination</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="traveldestination"
+          id="traveldestination"
+          [(ngModel)]="travel.travelDestination"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="travelTime" class="form-label">Travel Time</label>
+        <input
+          type="time"
+          class="form-control"
+          name="travelTime"
+          id="travelTime"
+          [(ngModel)]="travel.travel_time"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="travelDate" class="form-label">Travel Date</label>
+        <input
+          type="date"
+          class="form-control"
+          name="travelDate"
+          id="travelDate"
+          [(ngModel)]="travel.travelDate"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="travelcost" class="form-label">Travel Cost</label>
+        <input
+          type="text"
+          class="form-control"
+          name="travelcost"
+          id="travelcost"
+          [(ngModel)]="travel.travelCost"
+        />
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="driver" class="form-label">Select Driver</label>
+            <select
+              class="form-select"
+              id="driver"
+              name="driver"
+              [(ngModel)]="driver.driverId"
+              (ngModelChange)="onDriverSelectChange()"
+            >
+              <!-- Default Selection Test -->
+              <option [value]="driver.driverId" disabled>
+                {{ driver.driverName }}
+              </option>
+              <option
+                *ngFor="let drivers of selectDriver"
+                [ngValue]="drivers.driverId"
+              >
+                {{ drivers.driverName }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SELECT FOR CAB -->
+        <div class="col-md-6">
+          <label class="form-label" for="cab">Select Cab</label>
+          <select
+            class="form-select"
+            id="cab"
+            name="cab"
+            [(ngModel)]="cab.cabId"
+            disabled
+          >
+            <!-- Default Selection Test -->
+            <option [value]="0" disabled>Select Cab</option>
+            <!-- GET SELECTED CAB -->
+            <option [ngValue]="cab.cabId">
+              {{ cab.cabName }}
+            </option>
+          </select>
+          <input type="hidden" name="cabId" [value]="cab.cabId" />
+        </div>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button
+          (click)="onUpdateTravel()"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+        <button routerLink="/travel" type="submit" class="btn btn-warning">
+          Back to Travel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

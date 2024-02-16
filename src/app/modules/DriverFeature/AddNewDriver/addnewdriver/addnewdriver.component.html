@@ -1,0 +1,74 @@
+<div class="d-flex flex-column gap-5">
+  <h1>Ceate New Driver</h1>
+  <div>
+    <form>
+      <div class="mb-3">
+        <label for="drivername" class="form-label">Drive Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="drivername"
+          id="drivername"
+          [(ngModel)]="addNewDriver.driverName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="drivercontact" class="form-label">Driver Contact</label>
+        <input
+          type="text"
+          class="form-control"
+          name="drivercontact"
+          id="drivercontact"
+          [(ngModel)]="addNewDriver.driverContact"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="drivermykad" class="form-label">Driver MyKad</label>
+        <input
+          type="text"
+          class="form-control"
+          name="drivermykad"
+          id="drivermykad"
+          [(ngModel)]="addNewDriver.driverIdentificationNum"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="cabplatenum" class="form-label"
+          >Select Cab For Driver</label
+        >
+        <select
+          class="form-select"
+          id="cabId"
+          name="cabId"
+          [(ngModel)]="addNewDriver.cabId"
+        >
+          <option value="0" selected disabled>Select Cab</option>
+          <option value="-1">Dont Assign Cab</option>
+          <!-- Only display cabs if the array is not empty -->
+          <ng-container *ngIf="availableCabs.length > 0; else noDataTemplate">
+            <option *ngFor="let cab of availableCabs" [value]="cab.cabId">
+              {{ cab.cabName }}
+            </option>
+          </ng-container>
+          <!-- ng-template to show when there are no cabs available -->
+          <ng-template #noDataTemplate>
+            <option disabled>No data found</option>
+          </ng-template>
+        </select>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button
+          (click)="registerDriver()"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+        <button routerLink="/driver" type="submit" class="btn btn-warning">
+          Back to Driver
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

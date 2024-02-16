@@ -1,0 +1,58 @@
+<div class="container_center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="auth_box">
+          <div class="login-block d-flex flex-column g-3">
+            <div class="login-block-logo d-flex justify-content-center">
+              <img
+                src="../../../../../assets/images/mylogo.png"
+                alt="company logo"
+                class="img-fluid auth_logo"
+              />
+            </div>
+            <div class="login-block-form">
+              <form>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    [(ngModel)]="loginObj.user_email"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    [(ngModel)]="loginObj.user_password"
+                  />
+                </div>
+                <!-- Submit Button -->
+                <div class="mb-3">
+                  <input
+                    class="btn btn-primary w-100"
+                    type="button"
+                    value="Login"
+                    (click)="onLogin()"
+                  />
+                </div>
+                <div class="text-center">
+                  <p>
+                    Don't have an account. Click
+                    <a routerLink="/register">here</a> to Register
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

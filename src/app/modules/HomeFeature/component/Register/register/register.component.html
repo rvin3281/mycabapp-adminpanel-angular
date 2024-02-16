@@ -1,0 +1,161 @@
+<div class="container_center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <div class="auth_box">
+          <div class="d-flex flex-column g-5">
+            <div class="login-block-logo d-flex justify-content-center">
+              <img
+                src="../../../../../assets/images/mylogo.png"
+                alt="company logo"
+                class="img-fluid auth_logo"
+              />
+            </div>
+            <div class="login-block-form">
+              <form class="row">
+                <!-- NAME -->
+                <div class="col-12 mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    [(ngModel)]="registerObj.user_name"
+                  />
+                </div>
+                <!-- Identification -->
+                <div class="col-md-6 mb-3">
+                  <label for="identity" class="form-label"
+                    >Identification Number</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="identity"
+                    name="identity"
+                    [(ngModel)]="registerObj.user_identity"
+                  />
+                </div>
+                <!-- Gender -->
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Gender</label>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="gender"
+                      id="male"
+                      value="male"
+                      [(ngModel)]="registerObj.user_gender"
+                    />
+                    <label class="form-check-label" for="male"> Male </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="gender"
+                      id="female"
+                      value="female"
+                      [(ngModel)]="registerObj.user_gender"
+                    />
+                    <label class="form-check-label" for="female">
+                      Female
+                    </label>
+                  </div>
+                </div>
+                <!-- Mobile -->
+                <div class="col-md-6 mb-3">
+                  <label for="mobile" class="form-label">Mobile Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="mobile"
+                    name="mobile"
+                    [(ngModel)]="registerObj.user_mobile"
+                  />
+                </div>
+                <!-- email -->
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    [(ngModel)]="registerObj.user_email"
+                  />
+                </div>
+                <!-- address -->
+                <div class="col-12 mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    name="address"
+                    [(ngModel)]="registerObj.user_address"
+                  />
+                </div>
+                <!-- state -->
+                <div class="col-md-6 mb-3">
+                  <label for="state" class="form-label">State</label>
+                  <select
+                    class="form-select"
+                    id="state"
+                    [(ngModel)]="registerObj.user_state"
+                    name="state"
+                    aria-label="Default select example"
+                  >
+                    <option selected>Select State</option>
+                    <option value="Perak">Perak</option>
+                    <option value="Kuala Lumpur">Kuala Lumpur</option>
+                    <option value="Johor Bahru">Johor Bahru</option>
+                  </select>
+                </div>
+                <!-- city -->
+                <div class="col-md-6 mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="city"
+                    name="city"
+                    [(ngModel)]="registerObj.user_city"
+                  />
+                </div>
+                <!-- password -->
+                <div class="col-12 mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    [(ngModel)]="registerObj.user_password"
+                  />
+                </div>
+                <!-- Submit Button -->
+                <div class="mb-3">
+                  <input
+                    class="btn btn-primary w-100"
+                    type="button"
+                    value="Register"
+                    (click)="onRegister()"
+                  />
+                </div>
+                <div class="text-center">
+                  <p>
+                    Do you have an account. Click
+                    <a routerLink="/login">here</a> to Login
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

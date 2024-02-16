@@ -1,0 +1,119 @@
+<div class="d-flex flex-column gap-5">
+  <h1>Ceate New Travel</h1>
+  <div>
+    <form>
+      <div class="mb-3">
+        <label for="travelsource" class="form-label">Travel Source</label>
+        <select
+          class="form-select"
+          name="travelsource"
+          id="travelsource"
+          [(ngModel)]="addTravel.travelSource"
+        >
+          <option value="0" disabled selected>Select Source</option>
+          <option *ngFor="let state of availableState" [ngValue]="state.state">
+            {{ state.state }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="traveldestination" class="form-label"
+          >Travel Destination</label
+        >
+        <select
+          class="form-select"
+          name="traveldestination"
+          id="traveldestination"
+          [(ngModel)]="addTravel.travelDestination"
+        >
+          <option value="0" disabled selected>Select Destination</option>
+          <option *ngFor="let state of availableState" [ngValue]="state.state">
+            {{ state.state }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="cabname" class="form-label">Travel Time</label>
+        <input
+          type="time"
+          class="form-control"
+          name="travelTime"
+          id="travelTime"
+          [(ngModel)]="addTravel.travel_time"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="cabname" class="form-label">Travel Date</label>
+        <input
+          type="date"
+          class="form-control"
+          name="travelDate"
+          id="travelDate"
+          [(ngModel)]="addTravel.travelDate"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="cabname" class="form-label">Travel Cost</label>
+        <input
+          type="text"
+          class="form-control"
+          name="travelcost"
+          id="travelcost"
+          [(ngModel)]="addTravel.travelCost"
+        />
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="cab" class="form-label">Select Driver</label>
+            <select
+              class="form-select"
+              id="cab"
+              name="cab"
+              [(ngModel)]="addTravel.driverId"
+              (ngModelChange)="onDriverSelectChange()"
+            >
+              <option value="0" selected disabled>Select Driver Name</option>
+              <option
+                *ngFor="let driver of availableDrivers"
+                [ngValue]="driver.driverId"
+              >
+                {{ driver.driverName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="cabname" class="form-label">Cab</label>
+            <select
+              class="form-select"
+              id="cabSelect"
+              name="cabSelect"
+              [(ngModel)]="addTravel.cabId"
+              disabled
+            >
+              <!-- This option is for display purpose, it should not be selectable if there are available cabs -->
+
+              <!-- Loop through availableCabs and display them -->
+              <option [ngValue]="availableCabs?.cabId">
+                {{ availableCabs?.cabName }}
+              </option>
+            </select>
+            <!-- Hidden input to submit the selected cabId -->
+            <input type="hidden" name="cabId" [value]="addTravel.cabId" />
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button (click)="addNewTravel()" type="submit" class="btn btn-primary">
+          Submit
+        </button>
+        <button routerLink="/travel" type="submit" class="btn btn-warning">
+          Back to Travel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
